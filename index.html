@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-WJ3LWXF');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJ3LWXF" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="barratopo">
+        <span id="viewers"></span> pessoas assistindo neste momento <span id="cidade" style="font-weight: bold"></span>.
+    </div>
+    <div class="container">
+        <div id="headline">
+        </div>
+        <div id="player" class="embed-responsive embed-responsive-16by9">
+            <iframe frameborder="0" allowfullscreen="1" id="playeriframe"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                title="YouTube video player" width="640" height="360"
+                src="https://www.youtube.com/embed/TbfCxEuZlzg?autoplay=1&cc_lang_pref=en&cc_load_policy=1&controls=0&disablekb=1fs=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&showinfo=0&wmode=transparent&mute=1&enablejsapi=1&widgetid=1">
+            </iframe>
+            <div class="glass" id="glassDiv"></div>
+            <div class="playpause" id="togglePlay" style="z-index: 3; visibility: hidden;">
+                <img class="img-fluid mx-auto d-block" src="img/continue.svg">
+            </div>
+            <a class="soundButton" id="unmute">
+                <img class="img-fluid mx-auto d-block" src="img/sound.svg">
+            </a>
+
+        </div>
+        <div id="progressbar" style="width: 0%; background-color: #00B32C; height: 10px;"></div>
+        <div id="chkt">
+            <div class="botao animado">
+                sim, quero entrar agora para o <br /><b>PROTOCOLO zero barriga!</b>
+            </div>
+            <div class="vagas">
+                <span id="qtvagas">40</span> vagas disponíveis!
+            </div>
+        </div>
+
+        <div id="footer">
+            <div>
+                Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook.
+                Depois que
+                você
+                sair do
+                Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços
+                para indicar
+                claramente e mostrar todas as provas do produto e usamos resultados reais.
+            </div>
+            <div class="pt-3">
+                Copyright 2022®
+                Todos os direitos reservados
+            </div>
+            <div class="pt-3">
+                <a href="termos.html" target="_blank" rel="noopener">Termos de Uso</a> | <a href="politicas.html"
+                    target="_blank" rel="noopener">Políticas de
+                    Privacidade</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        function calcWidth(t) {
+            return 100 * Math.sqrt(1 - (t -= 1) * t)
+        }
+
+        function changeVagas() {
+            document.querySelectorAll(".vagas")[0].style.display = "block";
+            var vagas = parseInt(document.querySelectorAll("#qtvagas")[0].innerHTML);
+            if (vagas > 9) {
+                document.querySelectorAll("#qtvagas")[0].innerHTML = --vagas;
+                setTimeout(changeVagas, 10000);
+            }
+        }
+
+        function random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        var initial = random(18, 133);
+        var count = initial;
+
+        setInterval(function () {
+            var variation = random(-5, 5);
+
+            count += variation;
+
+            if (count < 0) {
+                count = 13;
+            }
+            document.querySelectorAll("#viewers")[0].innerHTML = count;
+
+        }, 2500);
+        document.querySelectorAll("#viewers")[0].innerHTML = initial;
+
+        var showButtonAt = 1294,
+            videoId = "TbfCxEuZlzg",
+            videoDivId = "playeriframe",
+            buttonId = ".botao";
+
+        (function () {
+            var tagScript = document.createElement("script");
+            tagScript.src = "//www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName("script")[0];
+            firstScriptTag.parentNode.insertBefore(tagScript, firstScriptTag);
+            var player;
+            var playing = false;
+            window.onYouTubeIframeAPIReady = function () {
+                player = new YT.Player(videoDivId, {
+                    "videoId": videoId
+                });
+
+                var videoTrigger = false;
+                var iframeWindow = player.getIframe().contentWindow;
+                var lastTimeUpdate = 0;
+                window.addEventListener("message", function (event) {
+                    if (event.source === iframeWindow) {
+                        var data = JSON.parse(event.data);
+                        if (
+                            data.event === "infoDelivery" &&
+                            data.info &&
+                            data.info.currentTime
+                        ) {
+                            var time = Math.floor(data.info.currentTime);
+
+                            if (time >= showButtonAt && videoTrigger !== true && playing) {
+                                showButton();
+                                videoTrigger = true;
+                            }
+
+                            if (playing) {
+                                var ratio = time / player.getDuration();
+                                document.querySelectorAll("#progressbar")[0].style.width = calcWidth(ratio) + "%";
+                            }
+                        }
+                    }
+                });
+            }
+
+            document.querySelectorAll("#unmute")[0].addEventListener('click', function (event) {
+                player.unMute();
+                player.seekTo(0);
+                this.style.display = "none";
+                playing = true;
+                document.querySelectorAll("#togglePlay")[0].style.display = "block";
+            });
+
+            document.querySelectorAll("#togglePlay")[0].addEventListener('click', function (event) {
+                if (playing) {
+                    player.pauseVideo();
+                    playing = false;
+                    this.style.display = "inline";
+                } else {
+                    player.playVideo();
+                    playing = true;
+                    this.style.display = "none";
+                }
+            });
+
+            document.querySelectorAll("#glassDiv")[0].addEventListener('click', function (event) {
+                if (playing) {
+                    player.pauseVideo();
+                    playing = false;
+                    // this.style.display = "none";
+                    document.querySelectorAll("#togglePlay")[0].style.display = "inline";
+                    document.querySelectorAll("#togglePlay")[0].style.visibility = "visible";
+                } else {
+                    player.playVideo();
+                    playing = true;
+                    // this.style.display = "block";
+                    document.querySelectorAll("#togglePlay")[0].style.display = "none";
+                    document.querySelectorAll("#togglePlay")[0].style.visibility = "hidden";
+                }
+            });
+
+            function showButton() {
+                document.querySelectorAll(buttonId)[0].style.display = "block";
+
+                document.querySelectorAll(buttonId)[0].addEventListener('click', function (event) {
+                    window.location.href = atob("aHR0cHM6Ly9nby5wZXJmZWN0cGF5LmNvbS5ici9QUFUzOENLUkk4VA==");
+                });
+                document.querySelectorAll(".vagas")[0].style.display = "block";
+                changeVagas();
+            }
+
+        })();
+
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://wtfismyip.com/json', true);
+
+        request.onload = function () {
+            if (this.status >= 200 && this.status < 400) {
+                var data = JSON.parse(this.response);
+                let output = data.YourFuckingLocation.replace(/\,.+/g, "$'");
+                document.getElementById("cidade").innerHTML = "em " + output;
+            } else { }
+        };
+        request.onerror = function () { };
+        request.send();
+    </script>
+</body>
+
+</html>
