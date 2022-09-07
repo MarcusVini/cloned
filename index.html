@@ -53,6 +53,7 @@
 
         </div>
         <div id="progressbar" style="width: 0%; background-color: #00B32C; height: 10px;"></div>
+        <div <span id="regressiva">5:00</span></div>
         <div id="chkt">
             <div class="botao animado">
                 sim, quero entrar agora para o <br /><b>PROTOCOLO zero barriga!</b>
@@ -224,6 +225,8 @@
     </script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/leonnardobezerra/secret-codes@main/social-notification/notification-style.min.css"><!-- script by secretcodes.rossdigitall.com --><div id="boost-notifications-wrapper"><div class="boost-notification type_easydigitaldownloads style_5 subtype_transaction boost-notification-desktop boost-notification-round desktop_bottom_left allow-to-close" id="boost-notification" style="display: block; background: #fff; border-color: #fff;"><div class="boost-notification-map"><img src=""></div><div class="boost-notification-message"><div class="boost-notification-message-top" id="client-name" style="color: #333; line-height: 1.2rem;overflow: visible;"><b>Franklin Jack da Cruz</b><br>comprou </div><div class="boost-notification-message-info" style="color: #333"><div class="boost-notification-time">Recentemente</div></div></div></div></div><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script><script>$(document).ready( function (){function showNotification (){$.get("https://api.rossdigitall.com/", function (response) {var html= "<b>" + response.name + "</b><br>comprou " + "";$("#client-name").html(html);}, "json");var time = Math.floor(Math.random() * 10);setTimeout(function() {$("#boost-notification").addClass("show");hideNotification();}, time * 1500)}function hideNotification (){setTimeout(function() {$("#boost-notification").removeClass("show");showNotification();}, 4000)}showNotification();});</script>
+
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script><script>function startTimer(duration, display) {var timer = duration, minutes, seconds;setInterval(function () {minutes = parseInt(timer / 60, 10), seconds = parseInt(timer % 60, 10);minutes = minutes < 10 ? "0" + minutes : minutes;seconds = seconds < 10 ? "0" + seconds : seconds;display.textContent = minutes + ":" + seconds;if (--timer < 0) {timer = duration;}}, 1000);}window.onload = function () {var fiveMinutes = 60 * 5,display = document.querySelector('#regressiva');startTimer(fiveMinutes, display);};</script>
 
 </body>
 
