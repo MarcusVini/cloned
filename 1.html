@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Plr</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <link rel="stylesheet" href="./plyr.css"/>
+  </head>
+
+  <body>
+
+
+
+    <div class="plyr__video-embed z-depth-1" id="player" style="--plyr-color-main: #F44336; border-radius:10px; ">
+ <iframe
+    src="https://www.youtube.com/watch?v=ZU9KRxmGy2Y?modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1"
+    allowfullscreen
+    allowtransparency
+    allow="autoplay"
+  ></iframe>  </div>
+
+  </body>
+  <script src="plyr.min.js"></script>
+    <script src="mdb.min.js"></script>
+  <script src="https://cdn.plyr.io/3.6.8/plyr.js"></script>
+  <script>
+     const player = new Plyr('#player', {
+                      title: 'Video',
+                      
+                    });
+        
+      player.on('ready', event => {
+          $('.plyr__control[data-plyr="fullscreen"]').hide();
+          //$('.plyr__control[data-plyr="settings"]').hide();
+          //$('.plyr__controls__item[data-plyr="volume"]').hide();
+          //$('.plyr__volume').hide();
+          
+        });  
+        
+        player.on('ended', event => {
+          //const instance = event.detail.plyr;
+          console.log("ended============");
+          player.restart();
+        });
+
+  </script>
+  <script>
+	$(document).ready(function(){
+	 
+	  
+	   
+	});
+  </script>
+
+  
+</html>
