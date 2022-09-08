@@ -131,9 +131,9 @@ a.soundButton {
 }
 
 .soundButton>img {
-    width: 100%;
+    width: 70%;
     position: absolute;
-    top: 0%;
+    top: 17%;
     left: 50%;
     transform: translateX(-50%);
 }
